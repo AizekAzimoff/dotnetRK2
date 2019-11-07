@@ -1,0 +1,48 @@
+﻿@model midterm.Models.Schedule
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Schedule</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.sch_day)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.sch_day)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.room)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.room.RoomID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.teacher)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.teacher.TeacherID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.group)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.group.GroupID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.course)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.course.CourseID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ScheduleID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

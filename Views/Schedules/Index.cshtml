@@ -1,0 +1,59 @@
+﻿@model IEnumerable<midterm.Models.Schedule>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.sch_day)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.room)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.teacher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.group)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.course)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.sch_day)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.room.RoomID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.teacher.TeacherID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.group.GroupID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.course.CourseID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ScheduleID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ScheduleID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ScheduleID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

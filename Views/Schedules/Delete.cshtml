@@ -1,0 +1,51 @@
+﻿@model midterm.Models.Schedule
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Schedule</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.sch_day)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.sch_day)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.room)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.room.RoomID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.teacher)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.teacher.TeacherID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.group)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.group.GroupID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.course)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.course.CourseID)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ScheduleID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

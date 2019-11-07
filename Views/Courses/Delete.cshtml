@@ -1,0 +1,33 @@
+﻿@model midterm.Models.Course
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.course_lang)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.course_lang)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.course_dur)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.course_dur)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CourseID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
