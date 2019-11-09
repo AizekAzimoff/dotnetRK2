@@ -1,12 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Net.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace midterm.Models
 {
-    public class Group
+    public class Group : IValidatableObject
     {
         /// <summary>
         /// Group id
@@ -16,7 +19,7 @@ namespace midterm.Models
         /// <summary>
         /// Group Name
         /// </summary>
-        [Display(Name = "Group Name")]
+        [Remote("isNameNotUsed", "Groups", HttpMethod = "POST", ErrorMessage = "Group with such name already exists.")]
         public String group_name { get; set; }
 
         /// <summary>
@@ -32,5 +35,20 @@ namespace midterm.Models
         public int group_stud_num { get; set; }
         public ICollection<Student> students { get; set; }
         public ICollection<Schedule> schedules { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            List<ValidationResult> errors = new List<ValidationResult>();
+
+            if (string.IsNullOrWhiteSpace(this.group_name))
+            {
+                errors.Add(new ValidationResult("You can not create group without name."));
+            }
+            else if (new Regex("!@#$%^&*()_+-=").Matches(this.group_name).Count > 0)
+            {
+                errors.Add(new ValidationResult("Dont use invalid symbols please."));
+            }
+            return errors;
+        }
     }
 }
