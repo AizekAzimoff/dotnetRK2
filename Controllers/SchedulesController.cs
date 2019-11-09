@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -51,10 +51,10 @@ namespace midterm.Controllers
         // GET: Schedules/Create
         public IActionResult Create()
         {
-            ViewData["CourseID"] = new SelectList(_context.Courses, "CourseID", "CourseID");
-            ViewData["GroupID"] = new SelectList(_context.Groups, "GroupID", "GroupID");
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "RoomID");
-            ViewData["TeacherID"] = new SelectList(_context.Teachers, "TeacherID", "TeacherID");
+            ViewData["CourseID"] = new SelectList(_context.Courses, "CourseID", "course_lang");
+            ViewData["GroupID"] = new SelectList(_context.Groups, "GroupID", "group_name");
+            ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "room_number");
+            ViewData["TeacherID"] = new SelectList(_context.Teachers, "TeacherID", "teach_name");
             return View();
         }
 
