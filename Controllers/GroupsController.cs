@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -23,6 +24,11 @@ namespace midterm.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Groups.ToListAsync());
+        }
+        [HttpPost]
+        public JsonResult isNameNotUsed(string group_name)
+        {
+            return Json(!_context.Groups.Any(group => group.group_name == group_name));
         }
 
         // GET: Groups/Details/5
