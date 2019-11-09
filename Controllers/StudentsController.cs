@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +19,7 @@ namespace midterm.Controllers
         {
             _context = context;
         }
+        
 
         // GET: Students
         public async Task<IActionResult> Index()
@@ -48,7 +50,7 @@ namespace midterm.Controllers
         // GET: Students/Create
         public IActionResult Create()
         {
-            ViewData["GroupID"] = new SelectList(_context.Groups, "GroupID", "GroupID");
+            ViewData["GroupID"] = new SelectList(_context.Groups, "GroupID", "group_name");
             return View();
         }
 
