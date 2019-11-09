@@ -22,7 +22,7 @@ namespace midterm.Models
 
         /// <summary>
         /// Teacher id
-        /// </summary>s
+        /// </summary>
         [Display(Name = "Teacher Id")]
         public int TeacherID { get; set; }
         public Teacher teacher { get; set; }

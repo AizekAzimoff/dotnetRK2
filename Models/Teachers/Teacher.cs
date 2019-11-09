@@ -17,18 +17,21 @@ namespace midterm.Models
         /// Teacher id
         /// </summary>
         [Display(Name = "Teacher Name")]
+        [Required]
         public String teach_name { get; set; }
 
         /// <summary>
         /// Teacher Phone
         /// </summary>
         [Display(Name = "Teacher Phone")]
+        [Required]
         public int teach_phone { get; set; }
 
         /// <summary>
         /// Teacher eMail
         /// </summary>
         [Display(Name = "Teacher e-mail")]
+        [Required]
         public int teach_mail { get; set; }
         public ICollection<Schedule> schedules { get; set; }
     }
