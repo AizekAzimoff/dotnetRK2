@@ -17,12 +17,14 @@ namespace midterm.Models
         /// Course id
         /// </summary>
         [Display(Name = "Course Language")]
+        [Required]
         public String course_lang { get; set; }
 
         /// <summary>
         /// Teacher id
         /// </summary>
         [Display(Name = "Course Duration")]
+        [Required]
         public String course_dur { get; set; }
 
         public ICollection<Ability> abilities { get; set; }

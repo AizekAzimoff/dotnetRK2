@@ -18,12 +18,14 @@ namespace midterm.Models
         /// Room number
         /// </summary>
         [Display(Name = "Room number")]
+        [Required]
         public int room_number { get; set; }
 
         /// <summary>
         /// Number of seats in room
         /// </summary>s
         [Display(Name = "Room seat number")]
+        [Required]
         public int room_seat_num { get; set; }
         public ICollection<Schedule> schedules { get; set; }
     }

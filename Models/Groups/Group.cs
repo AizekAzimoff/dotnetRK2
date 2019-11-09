@@ -26,12 +26,14 @@ namespace midterm.Models
         /// Teacher id
         /// </summary>
         [Display(Name = "Group Level")]
+        [Required]
         public String group_level { get; set; }
 
         /// <summary>
         /// Number of students in group
         /// </summary>
         [Display(Name = "Group stud number")]
+        [Required]
         public int group_stud_num { get; set; }
         public ICollection<Student> students { get; set; }
         public ICollection<Schedule> schedules { get; set; }
