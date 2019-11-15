@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using midterm.Data;
+using midterm.Models;
+using midterm.Services;
 
 namespace midterm
 {
@@ -20,6 +22,8 @@ namespace midterm
                 options.UseSqlite("Filename=movies.db");
             });
             services.AddMvc();
+            services.AddScoped<GroupService>();
+            services.AddScoped<IGroupsRepository, GroupsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,7 +38,7 @@ namespace midterm
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Movies}/{action=Index}/{id?}");
+                    template: "{controller=Gropus}/{action=Index}/{id?}");
             });
 
             app.UseStaticFiles();
