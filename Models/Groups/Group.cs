@@ -11,6 +11,8 @@ namespace midterm.Models
 {
     public class Group : IValidatableObject
     {
+       
+
         /// <summary>
         /// Group id
         /// </summary>
@@ -51,6 +53,21 @@ namespace midterm.Models
                 errors.Add(new ValidationResult("Dont use invalid symbols please."));
             }
             return errors;
+        }
+
+        public Group(int groupID, string group_name, string group_level, int group_stud_num)
+        {
+            GroupID = groupID;
+            this.group_name = group_name;
+            this.group_level = group_level;
+            this.group_stud_num = group_stud_num;
+        }
+        public Group(string group_name)
+        {
+            this.group_name = group_name;
+        }
+        public Group()
+        {
         }
     }
 }

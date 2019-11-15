@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,12 +8,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using midterm.Data;
 using midterm.Models;
+using midterm.Services;
 
 namespace midterm.Controllers
 {
     public class GroupsController : Controller
     {
         private readonly Context _context;
+        private GroupService _groupsService;
+
+        public GroupsController(GroupService groupsService)
+        {
+            _groupsService = groupsService;
+        }
 
         public GroupsController(Context context)
         {
@@ -23,7 +30,8 @@ namespace midterm.Controllers
         // GET: Groups
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Groups.ToListAsync());
+            var groups = await _groupsService.GetGroups();
+            return View(groups);
         }
         [HttpPost]
         public JsonResult isNameNotUsed(string group_name)
@@ -60,15 +68,15 @@ namespace midterm.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GroupID,group_name,group_level,group_stud_num")] Group @group)
+        public async Task<IActionResult> Create([Bind("GroupID,group_name,group_level,group_stud_num")] Group @group1)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(@group);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                await _groupsService.AddAndSave(group1);
+                var groups = await _groupsService.GetGroups();
+                return View("Index",groups);
             }
-            return View(@group);
+            return View(@group1);
         }
 
         // GET: Groups/Edit/5
